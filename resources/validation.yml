@@ -1,0 +1,14 @@
+Base\Transport\Entities\FavouritePlace:
+    getters:
+        id:
+            - NotBlank:
+                groups: [create]
+                message: 'validation.id.blank'
+        label:
+            - NotBlank:
+                groups: [update]
+                message: 'validation.label.blank'
+        location:
+            - NotBlank:
+                groups: [update]
+                message: 'validation.location.blank'
