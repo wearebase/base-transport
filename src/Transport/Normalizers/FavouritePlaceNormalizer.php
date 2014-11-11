@@ -30,7 +30,7 @@ class FavouritePlaceNormalizer extends SerializerAwareNormalizer implements Norm
                 $format,
                 $context
             );
-
+            $data['feature']['properties']['name'] = $object->getLabel() ?: "";
             if ($object->getLocation()) {
                 $data['feature']['properties'] = [
                     'name' => $object->getLocation(),
