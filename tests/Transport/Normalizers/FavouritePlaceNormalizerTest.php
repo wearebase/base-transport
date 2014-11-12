@@ -38,7 +38,7 @@ class FavouritePlaceNormalizerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals($this->getNormalized(), $normalized);
     }
 
-    public function testNormalizeWitoutGeolocation()
+    public function testNormalizeWithoutGeolocation()
     {
         $favouritePlace = new FavouritePlace();
         $favouritePlace->setLabel('City Centre');
@@ -46,6 +46,42 @@ class FavouritePlaceNormalizerTest extends \PHPUnit_Framework_TestCase
         $normalized = $this->serializer->normalize($favouritePlace);
 
         $this->assertNull($normalized['feature']);
+    }
+
+    public function testNormalizeWithoutLocationOrLabel()
+    {
+        $favouritePlace = new FavouritePlace();
+        $favouritePlace->setGeolocation(new Geolocation(52.9549135, -1.1582327));
+
+        $normalized = $this->serializer->normalize($favouritePlace);
+
+        $expectedGeometry = [
+            "type" => "Point",
+            "coordinates" => [52.9549135, -1.1582327],
+        ];
+        $this->assertEquals($expectedGeometry, $normalized['feature']['geometry']);
+
+        $expectedFeatureName = "";
+        $this->assertEquals($expectedFeatureName, $normalized['feature']['properties']['name']);
+    }
+
+    public function testNormalizeWithoutLocation()
+    {
+        $expectedFeatureName = "the feature name comes from the label by default";
+
+        $favouritePlace = new FavouritePlace();
+        $favouritePlace->setGeolocation(new Geolocation(52.9549135, -1.1582327));
+        $favouritePlace->setLabel($expectedFeatureName);
+
+        $normalized = $this->serializer->normalize($favouritePlace);
+
+        $expectedGeometry = [
+            "type" => "Point",
+            "coordinates" => [52.9549135, -1.1582327],
+        ];
+        $this->assertEquals($expectedGeometry, $normalized['feature']['geometry']);
+
+        $this->assertEquals($expectedFeatureName, $normalized['feature']['properties']['name']);
     }
 
     public function testDenormalization()
