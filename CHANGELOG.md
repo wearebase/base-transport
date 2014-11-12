@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.11 - 2014-11-12
+
+### Fixes
+
+- Default favourite place feature property names on normalization
+
 ## v1.0.8 - 2014-10-14
 
 ### Fixes
