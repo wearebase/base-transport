@@ -55,4 +55,41 @@ class BoundingBox implements GeolocationAreaInterface
             throw new \InvalidArgumentException('$topLeft must have a lesser longitude than $bottomRight');
         }
     }
+
+    public static function fromCenterAndDistance(GeolocationInterface $center, Distance $distance)
+    {
+        $radLat = deg2rad($center->getLat());
+        $radLon = deg2rad($center->getLong());
+
+        // angular distance in radians on a great circle
+        $radDist = $distance->getMeters() / GeolocationInterface::EARTH_RADIUS;
+
+        $minLat = $radLat - $radDist;
+        $maxLat = $radLat + $radDist;
+
+        $deltaLon = asin(sin($radDist) / cos($radLat));
+
+        $minLon = $radLon - $deltaLon;
+        //if (minLon < MIN_LON) {minLon += 2d * Math.PI;}
+
+        $maxLon = $radLon + $deltaLon;
+        //if (maxLon > MAX_LON) {maxLon -= 2d * Math.PI;}
+
+        $min = new Geolocation(rad2deg($maxLat), rad2deg($minLon));
+        $max = new Geolocation(rad2deg($minLat), rad2deg($maxLon));
+
+        return new BoundingBox($min, $max);
+    }
+
+    /** @return GeolocationInterface */
+    public function getTopLeft()
+    {
+        return $this->topLeft;
+    }
+
+    /** @return GeolocationInterface */
+    public function getBottomRight()
+    {
+        return $this->bottomRight;
+    }
 }
