@@ -22,6 +22,7 @@ class StopNormalizer extends SerializerAwareNormalizer implements NormalizerInte
             'common_name' => $object->getCommonName(),
             'localityname' => $object->getLocalityName(),
             'locality_name' => $object->getLocalityName(),
+            'direction' => $object->getDirection()
         ];
 
         return $data;
@@ -40,6 +41,7 @@ class StopNormalizer extends SerializerAwareNormalizer implements NormalizerInte
         $stop->setCommonName($data['commonname']);
         $stop->setLocalityName($data['localityname']);
         $stop->setGeolocation(new Geolocation($data['lat'], $data['lng']));
+        $stop->setDirection($data['direction']);
 
         return $stop;
     }

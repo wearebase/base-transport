@@ -11,6 +11,7 @@ class Stop
     protected $commonName;
     protected $localityName;
     protected $geolocation;
+    protected $direction;
 
     /**
      * @param array $properties
@@ -80,4 +81,15 @@ class Stop
     {
         return $this->geolocation;
     }
+
+    public function setDirection($direction)
+    {
+        $this->direction = $direction;
+    }
+
+    public function getDirection()
+    {
+        return $this->direction;
+    }
+
 }

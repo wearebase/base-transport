@@ -22,6 +22,7 @@ class StopNormalizerTest extends \PHPUnit_Framework_TestCase
         $stop->setGeolocation(new Geolocation(52.95512390, '-1.15813422'));
         $stop->setCommonName('Cathedral');
         $stop->setLocalityName('Nottingham');
+        $stop->setDirection('inbound');
 
         $normalized = $this->serializer->normalize($stop);
 
@@ -38,6 +39,7 @@ class StopNormalizerTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(-1.15813422, $stop->getGeolocation()->getLong());
         $this->assertEquals('Cathedral', $stop->getCommonName());
         $this->assertEquals('Nottingham', $stop->getLocalityName());
+        $this->assertEquals('inbound', $stop->getDirection());
     }
 
     private function getNormalized()
@@ -52,6 +54,7 @@ class StopNormalizerTest extends \PHPUnit_Framework_TestCase
             'common_name' => 'Cathedral',
             'localityname' => 'Nottingham',
             'locality_name' => 'Nottingham',
+            'direction' => 'inbound'
         ];
     }
 }
