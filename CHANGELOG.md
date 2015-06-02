@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.13 - 2015-06-02
+
+### Additions
+
+- Add direction to Stop
+
 ## v1.0.12 - 2015-02-12
 
 ### Additions
