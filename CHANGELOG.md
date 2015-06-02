@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.12 - 2015-02-12
+
+### Additions
+
+- Create BoundingBox from a centre point and distance
+
 ## v1.0.11 - 2014-11-12
 
 ### Fixes
