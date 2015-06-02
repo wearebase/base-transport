@@ -22,7 +22,7 @@ class StopNormalizer extends SerializerAwareNormalizer implements NormalizerInte
             'common_name' => $object->getCommonName(),
             'localityname' => $object->getLocalityName(),
             'locality_name' => $object->getLocalityName(),
-            'direction' => $object->getDirection()
+            'direction' => $object->getDirection(),
         ];
 
         return $data;

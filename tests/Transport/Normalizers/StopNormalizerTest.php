@@ -54,7 +54,7 @@ class StopNormalizerTest extends \PHPUnit_Framework_TestCase
             'common_name' => 'Cathedral',
             'localityname' => 'Nottingham',
             'locality_name' => 'Nottingham',
-            'direction' => 'inbound'
+            'direction' => 'inbound',
         ];
     }
 }
