@@ -3,9 +3,8 @@
 namespace Base\Transport\Normalizers;
 
 use Base\Geospatial\Geolocation;
-
-use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
+use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
 
 class StopNormalizer extends SerializerAwareNormalizer implements NormalizerInterface, DenormalizerInterface
@@ -22,6 +21,7 @@ class StopNormalizer extends SerializerAwareNormalizer implements NormalizerInte
             'common_name' => $object->getCommonName(),
             'localityname' => $object->getLocalityName(),
             'locality_name' => $object->getLocalityName(),
+            'direction' => $object->getDirection(),
         ];
 
         return $data;
@@ -40,6 +40,10 @@ class StopNormalizer extends SerializerAwareNormalizer implements NormalizerInte
         $stop->setCommonName($data['commonname']);
         $stop->setLocalityName($data['localityname']);
         $stop->setGeolocation(new Geolocation($data['lat'], $data['lng']));
+        
+        if (isset($data['direction'])) {
+            $stop->setDirection($data['direction']);
+        }
 
         return $stop;
     }
