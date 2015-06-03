@@ -105,7 +105,7 @@ class Stop
     }
 
     /**
-     * @return string
+     * @return GeolocationInterface
      */
     public function getGeolocation()
     {
