@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.0.14 - 2015-06-04
+
+### Additions
+
+- Add FavouritePlaceIcon
+
 ## v1.0.13 - 2015-06-02
 
 ### Additions
