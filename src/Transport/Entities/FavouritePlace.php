@@ -13,6 +13,7 @@ class FavouritePlace implements LabeledWaypointInterface
     protected $geolocation;
     protected $stops = [];
     protected $permanent = false;
+    protected $icon;
 
     public function setId($id)
     {
@@ -80,5 +81,21 @@ class FavouritePlace implements LabeledWaypointInterface
     public function isPermanent()
     {
         return $this->permanent === true;
+    }
+
+    /**
+     * @param FavouritePlaceIcon $icon
+     */
+    public function setIcon(FavouritePlaceIcon $icon)
+    {
+        $this->icon = $icon;
+    }
+
+    /**
+     * @return FavouritePlaceIcon
+     */
+    public function getIcon()
+    {
+        return $this->icon;
     }
 }
