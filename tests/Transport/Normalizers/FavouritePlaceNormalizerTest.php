@@ -160,7 +160,7 @@ class FavouritePlaceNormalizerTest extends \PHPUnit_Framework_TestCase
             'category' => [
                 'id' => 'id',
                 'label' => 'Label',
-            ]
+            ],
         ];
     }
 }
