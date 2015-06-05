@@ -92,7 +92,7 @@ class FavouritePlace implements LabeledWaypointInterface
     }
 
     /**
-     * @return FavouritePlaceCategory
+     * @return FavouritePlaceCategory|null
      */
     public function getCategory()
     {
