@@ -2,21 +2,21 @@
 
 namespace Base\Transport\Entities;
 
-class FavouritePlaceIcon
+class FavouritePlaceCategory
 {
-    private $category = '';
+    private $id = '';
     private $label = '';
 
     /** @return string */
-    public function getCategory()
+    public function getId()
     {
-        return $this->category;
+        return $this->id;
     }
 
-    /** @param string $category */
-    public function setCategory($category)
+    /** @param string $id */
+    public function setId($id)
     {
-        $this->category = strtolower($category);
+        $this->id = strtolower($id);
     }
 
     /** @return string */

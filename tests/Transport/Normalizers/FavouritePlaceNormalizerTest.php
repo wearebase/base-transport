@@ -6,7 +6,7 @@ use Base\Transport\Entities\AtcoCode;
 use Base\Transport\Entities\FavouritePlace;
 use Base\Geospatial\Geolocation;
 use Base\Geospatial\Normalizers\GeospatialNormalizer;
-use Base\Transport\Entities\FavouritePlaceIcon;
+use Base\Transport\Entities\FavouritePlaceCategory;
 
 class FavouritePlaceNormalizerTest extends \PHPUnit_Framework_TestCase
 {
@@ -18,7 +18,7 @@ class FavouritePlaceNormalizerTest extends \PHPUnit_Framework_TestCase
             new FavouritePlaceNormalizer(),
             new AtcoCodeNormalizer(),
             new GeospatialNormalizer(),
-            new FavouritePlaceIconNormalizer(),
+            new FavouritePlaceCategoryNormalizer(),
         ]);
     }
 
@@ -35,11 +35,11 @@ class FavouritePlaceNormalizerTest extends \PHPUnit_Framework_TestCase
         ]);
         $favouritePlace->setPermanent(true);
 
-        $icon = new FavouritePlaceIcon();
+        $icon = new FavouritePlaceCategory();
         $icon->setLabel('Label');
-        $icon->setCategory('category');
+        $icon->setId('id');
 
-        $favouritePlace->setIcon($icon);
+        $favouritePlace->setCategory($icon);
 
         $normalized = $this->serializer->normalize($favouritePlace);
 
@@ -157,8 +157,8 @@ class FavouritePlaceNormalizerTest extends \PHPUnit_Framework_TestCase
                 '3390Y2',
             ],
             'permanent' => true,
-            'icon' => [
-                'category' => 'category',
+            'category' => [
+                'id' => 'id',
                 'label' => 'Label',
             ]
         ];
