@@ -4,7 +4,7 @@
 
 ### Additions
 
-- Add FavouritePlaceIcon
+- Add FavouritePlaceCategory
 
 ## v1.0.13 - 2015-06-02
 
