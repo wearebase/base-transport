@@ -35,11 +35,11 @@ class FavouritePlaceNormalizerTest extends \PHPUnit_Framework_TestCase
         ]);
         $favouritePlace->setPermanent(true);
 
-        $icon = new FavouritePlaceCategory();
-        $icon->setLabel('Label');
-        $icon->setId('id');
+        $category = new FavouritePlaceCategory();
+        $category->setLabel('Label');
+        $category->setId('id');
 
-        $favouritePlace->setCategory($icon);
+        $favouritePlace->setCategory($category);
 
         $normalized = $this->serializer->normalize($favouritePlace);
 

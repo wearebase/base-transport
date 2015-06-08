@@ -24,10 +24,10 @@ class FavouritePlaceCategoryNormalizer extends SerializerAwareNormalizer impleme
 
     public function denormalize($data, $class, $format = null, array $context = [])
     {
-        $icon = new FavouritePlaceCategory();
-        $icon->setId($data['id']);
-        $icon->setLabel($data['label']);
-        return $icon;
+        $category = new FavouritePlaceCategory();
+        $category->setId($data['id']);
+        $category->setLabel($data['label']);
+        return $category;
     }
 
     public function supportsDenormalization($data, $type, $format = null)

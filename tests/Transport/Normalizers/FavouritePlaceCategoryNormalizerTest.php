@@ -16,11 +16,11 @@ class FavouritePlaceCategoryNormalizerTest extends \PHPUnit_Framework_TestCase
 
     public function testNormalization()
     {
-        $icon = new FavouritePlaceCategory;
-        $icon->setLabel('Label');
-        $icon->setId('id');
+        $category = new FavouritePlaceCategory;
+        $category->setLabel('Label');
+        $category->setId('id');
 
-        $normalized = $this->serializer->normalize($icon);
+        $normalized = $this->serializer->normalize($category);
         $this->assertCount(2, $normalized);
         $this->assertEquals('Label', $normalized['label']);
         $this->assertEquals('id', $normalized['id']);
