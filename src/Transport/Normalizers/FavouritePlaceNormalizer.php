@@ -41,6 +41,10 @@ class FavouritePlaceNormalizer extends SerializerAwareNormalizer implements Norm
             $data['feature'] = null;
         }
 
+        if ($object->getCategory()) {
+            $data['category'] = $this->serializer->normalize($object->getCategory(), $format, $context);
+        }
+
         return $data;
     }
 
@@ -97,6 +101,17 @@ class FavouritePlaceNormalizer extends SerializerAwareNormalizer implements Norm
 
         if (isset($data['feature']['properties']['name'])) {
             $favouritePlace->setLocation($data['feature']['properties']['name']);
+        }
+
+        if (isset($data['category'])) {
+            $favouritePlace->setCategory(
+                $this->serializer->denormalize(
+                    $data['category'],
+                    'Base\\Transport\\Entities\\FavouritePlaceCategory',
+                    $format,
+                    $context
+                )
+            );
         }
 
         return $favouritePlace;
