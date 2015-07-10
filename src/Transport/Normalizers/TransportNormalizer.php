@@ -14,6 +14,7 @@ class TransportNormalizer extends SerializerAwareNormalizer implements Normalize
     public function __construct()
     {
         $this->normalizers[] = new FavouritePlaceNormalizer();
+        $this->normalizers[] = new FavouritePlaceCategoryNormalizer();
         $this->normalizers[] = new StopNormalizer();
         $this->normalizers[] = new AtcoCodeNormalizer();
     }
