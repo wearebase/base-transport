@@ -31,7 +31,6 @@ class FavouritePlaceNormalizerTest extends \PHPUnit_Framework_TestCase
             new AtcoCode('3390Y3'),
             new AtcoCode('3390Y2'),
         ]);
-        $favouritePlace->setPermanent(true);
 
         $normalized = $this->serializer->normalize($favouritePlace);
 
@@ -93,7 +92,6 @@ class FavouritePlaceNormalizerTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(Geolocation::class, $favouritePlace->getGeolocation());
         $this->assertInternalType('array', $favouritePlace->getStops());
         $this->assertContainsOnlyInstancesOf(AtcoCode::class, $favouritePlace->getStops());
-        $this->assertTrue($favouritePlace->isPermanent());
     }
 
     public function testDenormalizationWithoutGeolocation()
@@ -112,7 +110,6 @@ class FavouritePlaceNormalizerTest extends \PHPUnit_Framework_TestCase
             'id' => 'fp-542ac6f94a632',
             'label' => 'New Favourite Place',
             'stops' => [],
-            'permanent' => false,
             'feature' => [
                 'properties' => [],
                 'geometry' => [
@@ -148,7 +145,6 @@ class FavouritePlaceNormalizerTest extends \PHPUnit_Framework_TestCase
                 '3390Y3',
                 '3390Y2',
             ],
-            'permanent' => true
         ];
     }
 }
