@@ -6,6 +6,7 @@ use Base\Geospatial\Geolocation;
 use Base\Geospatial\Normalizers\GeospatialNormalizer;
 use Base\Transport\Entities\AtcoCode;
 use Base\Transport\Entities\FavouritePlace;
+use Base\Transport\Entities\FavouritePlaceCategory;
 use Base\Transport\Normalizers\TransportNormalizer;
 
 class FavouritePlacesTest extends \PHPUnit_Framework_TestCase
@@ -29,7 +30,12 @@ class FavouritePlacesTest extends \PHPUnit_Framework_TestCase
 
     public function testNormalization()
     {
+        $category = new FavouritePlaceCategory();
+        $category->setId('id');
+        $category->setLabel('Label');
+
         $favouritePlace = new FavouritePlace();
+        $favouritePlace->setCategory($category);
         $favouritePlace->setLabel('City Centre');
         $favouritePlace->setLocation('NG1 5AW');
         $favouritePlace->setGeolocation(new Geolocation(52.9549135, -1.1582327));
@@ -72,7 +78,11 @@ class FavouritePlacesTest extends \PHPUnit_Framework_TestCase
                 '3390Y3',
                 '3390Y2',
             ],
-            'permanent' => true
+            'permanent' => true,
+            'category' => [
+                'id' => 'id',
+                'label' => 'label',
+            ],
         ]];
     }
 }

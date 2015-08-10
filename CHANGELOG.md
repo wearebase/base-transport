@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.0.15 - 2015-07-10
+
+### Fixes
+
+- Include FavouritePlaceCategory in normalization
+
+## v1.0.14 - 2015-06-04
+
+### Additions
+
+- Add FavouritePlaceCategory
+
 ## v1.0.13 - 2015-06-02
 
 ### Additions
