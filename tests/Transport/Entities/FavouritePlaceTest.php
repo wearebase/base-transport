@@ -27,6 +27,8 @@ class FavouritePlaceTest extends \PHPUnit_Framework_TestCase
     public function testNewInstance()
     {
         $favouritePlace = new FavouritePlace();
+
+        $this->assertFalse($favouritePlace->isPermanent());
     }
 
     public function testAccessors()
@@ -36,11 +38,13 @@ class FavouritePlaceTest extends \PHPUnit_Framework_TestCase
         $favouritePlace->setLabel('Home');
         $favouritePlace->setGeolocation(new Geolocation(52.9549135, -1.1582327));
         $favouritePlace->setStops(['3390Y4', '3390Y3']);
+        $favouritePlace->setPermanent(true);
 
         $this->assertEquals('12345', $favouritePlace->getId());
         $this->assertEquals('Home', $favouritePlace->getLabel());
         $this->assertInstanceOf('Base\\Geospatial\\Geolocation', $favouritePlace->getGeolocation());
         $this->assertEquals(['3390Y4', '3390Y3'], $favouritePlace->getStops());
+        $this->assertTrue($favouritePlace->isPermanent());
     }
 
     public function testIsLikeLabel()

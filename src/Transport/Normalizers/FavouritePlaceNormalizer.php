@@ -17,6 +17,7 @@ class FavouritePlaceNormalizer extends SerializerAwareNormalizer implements Norm
             'id' => $object->getId(),
             'label' => $object->getLabel(),
             'stops' => [],
+            'permanent' => $object->isPermanent(),
         ];
 
         foreach ($object->getStops() as $stop) {
@@ -88,6 +89,10 @@ class FavouritePlaceNormalizer extends SerializerAwareNormalizer implements Norm
                     $context
                 )
             );
+        }
+
+        if (isset($data['permanent'])) {
+            $favouritePlace->setPermanent((bool)$data['permanent']);
         }
 
         if (isset($data['feature']['properties']['name'])) {

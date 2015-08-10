@@ -38,6 +38,7 @@ class FavouritePlacesTest extends \PHPUnit_Framework_TestCase
             new AtcoCode('3390Y3'),
             new AtcoCode('3390Y2'),
         ]);
+        $favouritePlace->setPermanent(true);
 
         $data = $this->extension->normalize($this->serializer, [$favouritePlace]);
 
@@ -71,6 +72,7 @@ class FavouritePlacesTest extends \PHPUnit_Framework_TestCase
                 '3390Y3',
                 '3390Y2',
             ],
+            'permanent' => true
         ]];
     }
 }
