@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.0.0 - 2015-09-01
+
+### Breakages
+
+- Remove Favourite Place Permanence
+
 ## v1.0.15 - 2015-07-10
 
 ### Fixes
