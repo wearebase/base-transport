@@ -7,6 +7,9 @@ use Symfony\Component\Serializer\Normalizer\NormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\DenormalizerInterface;
 use Symfony\Component\Serializer\Normalizer\SerializerAwareNormalizer;
 
+/**
+ * Wrap other SerializerAwareNormalizers and use on first-come-first-served basis
+ */
 class TransportNormalizer extends SerializerAwareNormalizer implements NormalizerInterface, DenormalizerInterface
 {
     protected $normalizers = [];
